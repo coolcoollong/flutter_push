@@ -1,0 +1,131 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.cpcn.flutter_push">
+    <!-- 最低支持 19-->
+    <uses-sdk tools:overrideLibrary="com.meizu.cloud.pushinternal" />
+
+
+    <uses-permission android:name="com.meizu.flyme.push.permission.RECEIVE" />
+    <permission android:name="${applicationId}.push.permission.MESSAGE" android:protectionLevel="signature"/>
+    <uses-permission android:name="${applicationId}.push.permission.MESSAGE" />
+    <uses-permission android:name="com.meizu.c2dm.permission.RECEIVE" />
+    <permission
+        android:name="${applicationId}.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="${applicationId}.permission.C2D_MESSAGE"/>
+<application>
+    <!--Vivo Push开放平台中应用的appid 和api key-->
+    <meta-data
+        android:name="com.vivo.push.api_key"
+        android:value="${VIVO_APP_KEY}" />
+    <meta-data
+        android:name="com.vivo.push.app_id"
+        android:value="${VIVO_APP_ID}" />
+    <meta-data
+        android:name="sdk_version_vivo"
+        android:value="484"/>
+    <receiver android:name="com.cpcn.flutter_push.vivo.PushMessageReceiverImpl"
+        android:exported="false">
+        <intent-filter>
+            <action android:name="com.vivo.pushclient.action.RECEIVE" />
+        </intent-filter>
+    </receiver>
+    <!--oppo Push开放平台中应用的appid 和api key-->
+    <service
+        android:name="com.heytap.msp.push.service.CompatibleDataMessageCallbackService"
+        android:permission="com.coloros.mcs.permission.SEND_MCS_MESSAGE"
+        android:exported="false">
+        <intent-filter>
+            <action android:name="com.coloros.mcs.action.RECEIVE_MCS_MESSAGE" />
+        </intent-filter>
+    </service> <!--兼容Q以下版本-->
+
+    <service
+        android:name="com.heytap.msp.push.service.DataMessageCallbackService"
+        android:permission="com.heytap.mcs.permission.SEND_PUSH_MESSAGE"
+        android:exported="false">
+
+        <intent-filter>
+            <action android:name="com.heytap.mcs.action.RECEIVE_MCS_MESSAGE" />
+            <action android:name="com.heytap.msp.push.RECEIVE_MCS_MESSAGE" />
+        </intent-filter>
+    </service> <!--兼容Q版本-->
+
+    <!--华为推送-->
+
+    <service
+        android:name="com.cpcn.flutter_push.huawei.UnifiedHmsMessageService"
+        android:exported="false">
+        <intent-filter>
+            <action android:name="com.huawei.push.action.MESSAGING_EVENT" />
+        </intent-filter>
+    </service>
+    <activity
+        android:name="com.cpcn.flutter_push.huawei.HmsMessageReceiveActivity"
+        android:theme="@android:style/Theme.Translucent.NoTitleBar"
+        android:exported="true">
+        <intent-filter>
+            <data
+                android:host="com.mixpush.huawei"
+                android:path="/message"
+                android:scheme="mixpush" />
+            <action android:name="android.intent.action.VIEW" />
+
+            <category android:name="android.intent.category.DEFAULT" />
+            <category android:name="android.intent.category.BROWSABLE" />
+        </intent-filter>
+
+    </activity>
+    <!--华为推送 _____________  end-->
+    <meta-data
+        android:name="OPPO_APP_SECRET"
+        android:value="UNIFIEDPUSH-${OPPO_APP_SECRET}" />
+    <meta-data
+        android:name="OPPO_APP_KEY"
+        android:value="UNIFIEDPUSH-${OPPO_APP_KEY}" />
+    <meta-data
+        android:name="com.huawei.hms.client.appid"
+        android:value="appid=108070121"/>
+    <!--魅族推送 _____________  end-->
+    <!-- push应用定义消息receiver声明 -->
+    <receiver android:name="com.cpcn.flutter_push.meizu.MeizuPushMsgReceiver"
+        android:exported="false">
+        <intent-filter>
+            <!-- 接收push消息 -->
+            <action android:name="com.meizu.flyme.push.intent.MESSAGE" />
+            <!-- 接收register消息-->
+            <action android:name="com.meizu.flyme.push.intent.REGISTER.FEEDBACK" />
+            <!-- 接收unregister消息-->
+            <action android:name="com.meizu.flyme.push.intent.UNREGISTER.FEEDBACK" />
+
+            <action android:name="com.meizu.c2dm.intent.REGISTRATION" />
+            <action android:name="com.meizu.c2dm.intent.RECEIVE" />
+
+            <category android:name="${applicationId}" />
+        </intent-filter>
+    </receiver>
+
+    <meta-data
+        android:name="MEIZU_APP_ID"
+        android:value="UNIFIEDPUSH-${MEIZU_APP_ID}" />
+    <meta-data
+        android:name="MEIZU_APP_KEY"
+        android:value="UNIFIEDPUSH-${MEIZU_APP_KEY}" />
+    <meta-data
+        android:name="com.hihonor.push.app_id"
+        android:value="104410528" />
+    <service
+        android:name="com.cpcn.flutter_push.honor.HonorMsgService"
+        android:exported="false">
+        <intent-filter>
+            <action android:name="com.hihonor.push.action.MESSAGING_EVENT" />
+        </intent-filter>
+    </service>
+
+</application>
+    <queries>
+        <intent>
+            <action android:name="com.huawei.hms.core.aidlservice" />
+        </intent>
+    </queries>
+</manifest>
