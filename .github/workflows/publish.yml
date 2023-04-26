@@ -14,6 +14,3 @@ jobs:
       # - run: dart tool/generate-code.dart
       - name: Publish
         run: dart pub publish --force
-        with:
-          accessToken: ${{ secrets.OAUTH_ACCESS_TOKEN }}
-          refreshToken: ${{ secrets.OAUTH_REFRESH_TOKEN }}
