@@ -24,7 +24,7 @@ jobs:
     - run: dart format --set-exit-if-changed .
     - run: flutter analyze .
     - run: flutter test --coverage
-    # - uses: romeovs/lcov-reporter-action@v0.2.16
+    # - uses: romeovs/lcov-reporter-action@v0.2.16. ada
     #   with:
     #     lcov-file: ./packages/vector_graphics_codec/coverage/lcov.info
     #     github-token: ${{ secrets.GITHUB_TOKEN }}
