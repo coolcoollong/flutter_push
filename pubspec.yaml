@@ -1,6 +1,6 @@
 name: flutter_push
 description: Based on the idea of unified push alliance, the push platform of six vendors has been rapidly integrated, and the vendor push channel of the shared system has been shared to avoid the need for the APP to run in the background for a long time, killing the APP can also receive the push.
-version: 0.0.68
+version: 0.0.69
 homepage: 'https://www.baidu.com'
 
 environment:

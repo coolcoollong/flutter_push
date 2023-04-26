@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:flutter/src/services/message_codec.dart';
 import 'package:flutter_test/flutter_test.dart';
