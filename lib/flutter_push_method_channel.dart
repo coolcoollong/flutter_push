@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 
 import 'flutter_push_platform_interface.dart';
 
-/// An implementation of [FlutterPushPlatform] that uses method channels.      ds
+/// An implementation of [FlutterPushPlatform] that uses method channels.
 class MethodChannelFlutterPush extends FlutterPushPlatform {
   @visibleForTesting
   final methodChannel = const MethodChannel('flutter_push');
