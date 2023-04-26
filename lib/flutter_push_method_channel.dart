@@ -1,4 +1,3 @@
-import 'dart:ffi';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
@@ -26,11 +25,11 @@ class MethodChannelFlutterPush extends FlutterPushPlatform {
   static Future<void> _methodCallHandler(MethodCall call) async {
     switch (call.method) {
       case 'onRegisterSucceed':
-        print("onRegisterSucceed________${call.arguments.runtimeType}");
-        print("onRegisterSucceed________${call.arguments}");
+        // print("onRegisterSucceed________${call.arguments.runtimeType}");
+        // print("onRegisterSucceed________${call.arguments}");
         if (call.arguments is Map) {
-          print(
-              "onRegisterSucceed________${call.arguments['platformName']}  ${call.arguments['regId']}");
+          // print(
+          //     "onRegisterSucceed________${call.arguments['platformName']}  ${call.arguments['regId']}");
         }
         break;
       default:
