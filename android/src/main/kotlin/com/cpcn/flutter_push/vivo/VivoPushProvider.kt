@@ -10,7 +10,7 @@ import java.util.*
 
 class VivoPushProvider : BaseMixPushProvider() {
 
-
+    //cool
     private var handler: MixPushHandler = MixPushClient.getInstance().handler
     override fun register(context: Context?, type: RegisterType?) {
         handler.logger.log(TAG, "initialize")
