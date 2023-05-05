@@ -19,7 +19,7 @@ class VivoPushProvider : BaseMixPushProvider() {
             PushClient.getInstance(context).turnOnPush(IPushActionListener { state: Int ->
                 // 开关状态处理， 0代表成功
                 if (state == 0) {
-                    VivoPushProvider.isTurnOnPush=true;
+                    isTurnOnPush=true;
                     handler.logger.log(TAG, "开启成功了")
                 } else {
                     handler.logger.log(TAG, "开启失败$state")
@@ -45,7 +45,7 @@ class VivoPushProvider : BaseMixPushProvider() {
         PushClient.getInstance(context).turnOffPush {state: Int ->
             // 开关状态处理， 0代表成功
             if (state == 0) {
-                VivoPushProvider.isTurnOnPush=false;
+                isTurnOnPush=false;
                 handler.logger.log(TAG, "关闭成功了")
             }
         }
@@ -60,7 +60,7 @@ class VivoPushProvider : BaseMixPushProvider() {
         PushClient.getInstance(context).turnOnPush(IPushActionListener { state: Int ->
             // 开关状态处理， 0代表成功
             if (state == 0) {
-                VivoPushProvider.isTurnOnPush=true;
+                isTurnOnPush=true;
                 handler.logger.log(TAG, "开启成功了")
             } else {
                 handler.logger.log(TAG, "开启失败$state")
@@ -72,7 +72,7 @@ class VivoPushProvider : BaseMixPushProvider() {
         PushClient.getInstance(context).turnOffPush {state: Int ->
             // 开关状态处理， 0代表成功
             if (state == 0) {
-                VivoPushProvider.isTurnOnPush=false;
+                isTurnOnPush=false;
                 handler.logger.log(TAG, "关闭成功了")
             }
         }
@@ -98,10 +98,10 @@ class VivoPushProvider : BaseMixPushProvider() {
 
         return isTurnOnPush;
     }
-
+    private var isTurnOnPush:Boolean=false
     companion object {
          val platformName = "vivo"
          var TAG = "v-i-v-o"
-         var isTurnOnPush:Boolean=false
+
     }
 }
